@@ -1,0 +1,29 @@
+{
+  "name": "lgf_webapp",
+  "version": "1.0.0",
+  "description": "web application for LGF ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicholaszani/LGF-Web-App.git"
+  },
+  "keywords": [
+    "LGF",
+    "WEB",
+    "APP"
+  ],
+  "author": "Nicholas C. Zani",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nicholaszani/LGF-Web-App/issues"
+  },
+  "homepage": "https://github.com/nicholaszani/LGF-Web-App#readme",
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "mongoose": "^6.3.6"
+  }
+}
