@@ -1,0 +1,49 @@
+<%- include("header") -%>
+
+<section id="title" class="bodyColor">
+  <div class="px-4 py-5 text-center">
+    <img class="d-block mx-auto mb-4 heroesImg" src="/images/lgf-tree-transparent.png" alt="lgf-logo">
+    <h1 class="display-5 fw-bold">Gerenciador de reservas</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">
+        Faça reserva de equipamentos, veja listas atualizadas de equipamentos
+        disponíveis para reserva e consulte reservas em tempo real, tudo de maneira
+        fácil e intuitiva.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="container px-4 py-5" id="featured-3">
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+      <div class="feature col">
+        <div class="feature-icon d-inline-flex align-items-center bg-gradient justify-content-center fs-2 mb-3">
+          <img src="/images/gears.png" alt="gears-icon" style="width:50px">
+        </div>
+        <h2>Reserve equipamentos</h2>
+        <p>Faça a reserva dos equipamentos que você precisará usar durante sua semana de trabalho.</p>
+        <a href="/reservar" class="icon-link d-inline-flex align-items-center">Reservar</a>
+      </div>
+      <div class="feature col">
+        <div class="feature-icon d-inline-flex align-items-center bg-gradient justify-content-center fs-2 mb-3">
+          <img src="/images/files.jpg" alt="files-icon" style="width:50px">
+        </div>
+        <h2>Consulte equipamentos</h2>
+        <p>Veja a lista de equipamentos do lab disponíveis para reserva.</p>
+        <a href="/reservar" class="icon-link d-inline-flex align-items-center">Ver lista</a>
+      </div>
+      <div class="feature col">
+        <div class="feature-icon d-inline-flex align-items-center bg-gradient justify-content-center fs-2 mb-3">
+          <img src="/images/magnifying-glass.png" alt="magnifying-glass-icon" style="width:50px">
+        </div>
+        <h2>Consulte reservas</h2>
+        <p>Veja as reservas de cada equipamento feitas para esta semana.</p>
+        <a href="/reservas" class="icon-link d-inline-flex align-items-center">Ver reservas</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<%- include("footer") -%>

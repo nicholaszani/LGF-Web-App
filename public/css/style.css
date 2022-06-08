@@ -1,0 +1,53 @@
+.greyBG {
+  background-color: #E5E8E8;
+}
+
+.container-fluid {
+  padding: 3% 7%;
+}
+
+.navbar-brand {
+  padding-left: 1%;
+}
+
+.footerContainer {
+  padding-top: 15px;
+  padding-bottom: 10px;
+}
+
+.tableColor {
+  background-color:#F5F5F5;
+}
+
+.navbar {
+  padding: 0;
+}
+
+.navbarLogo{
+  width: 60px;
+}
+
+.nav-link {
+  color: black;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+
+.bigHeading {
+  font-size: 3rem;
+  line-height: 1.5;
+}
+
+#title {
+  text-align:left;
+}
+
+.heroesImg {
+  width: 110px;
+  background-color: #E5E8E8;
+}
+
+.bodyColor {
+  background-color: #E5E8E8;
+}
