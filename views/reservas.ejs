@@ -1,16 +1,51 @@
 <%- include("header") -%>
 
-  <div class="container-fluid reservasPage">
-    <h2>Reservas</h2>
-    <br>
-    <a class="" href="/reservas/capela">Capela</a><br>
-    <a class="" href="/reservas/centrifugas">Centrífugas</a><br>
-    <a class="" href="/reservas/fluxo">Fluxos laminares</a><br>
-    <a class="" href="/reservas/leitor-de-placas">Leitor de placas</a><br>
-    <a class="" href="/reservas/qpcr">qPCR</a><br>
-    <a class="" href="/reservas/shakers">Shakers</a><br>
-    <a class="" href="/reservas/termocicladores">Termocicladores</a><br>
+<div class="container">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 py-5 my-5">
+    <div class="col my-3 alignCenter">
+      <div class="feature-icon d-inline-flex align-items-center bg-gradient justify-content-center fs-2 mb-3">
+        <img src="/images/capela.png" alt="hood-icon" style="width:50px">
+      </div>
+      <h5><a class="nav-link" href="/reservas/capela">Capela</a></h5>
+    </div>
+    <div class="col my-3 alignCenter">
+      <div class="feature-icon d-inline-flex align-items-center bg-gradient justify-content-center fs-2 mb-3">
+        <img src="/images/centrifuge.png" alt="centrifuge-icon" style="width:50px">
+      </div>
+      <h5><a class="nav-link" href="/reservas/centrifugas">Centrífugas</a></h5>
+    </div>
+    <div class="col my-3 alignCenter">
+      <div class="feature-icon d-inline-flex align-items-center bg-gradient justify-content-center fs-2 mb-3">
+        <img src="/images/fluxo.png" alt="uv-icon" style="width:50px">
+      </div>
+      <h5><a class="nav-link" href="/reservas/fluxos">Fluxos</a></h5>
+    </div>
+    <div class="col my-3 alignCenter">
+      <div class="feature-icon d-inline-flex align-items-center bg-gradient justify-content-center fs-2 mb-3">
+        <img src="/images/microplaca.png" alt="microplate-icon" style="width:50px">
+      </div>
+      <h5><a class="nav-link" href="/reservas/leitor-de-placas">Leitor de placas</a></h5>
+    </div>
+    <div class="col my-3 alignCenter">
+      <div class="feature-icon d-inline-flex align-items-center bg-gradient justify-content-center fs-2 mb-3">
+        <img src="/images/qpcr-modified.png" alt="qpcr-icon" style="width:50px">
+      </div>
+      <h5><a class="nav-link" href="/reservas/qpcr">qPCR</a></h5>
+    </div>
+    <div class="col my-3 alignCenter">
+      <div class="feature-icon d-inline-flex align-items-center bg-gradient justify-content-center fs-2 mb-3">
+        <img src="/images/shaker.png" alt="shaker-icon" style="width:50px">
+      </div>
+      <h5><a class="nav-link" href="/reservas/shakers">Shakers</a></h5>
+    </div>
+    <div class="col my-3 alignCenter">
+      <div class="feature-icon d-inline-flex align-items-center bg-gradient justify-content-center fs-2 mb-3">
+        <img src="/images/termociclador.png" alt="thermal-cycler-icon" style="width:50px">
+      </div>
+      <h5><a class="nav-link" href="/reservas/termocicladores">Termocicladores</a></h5>
+    </div>
   </div>
+</div>
 
 
 <%- include("footer") -%>

@@ -19,6 +19,12 @@ const bookingSchema = new mongoose.Schema ({
 
 const Book = mongoose.model("Book", bookingSchema);
 
+const equipmentSchema = new mongoose.Schema ({
+  codigo: String,
+  reservas: [bookingSchema]
+});
+
+const Equipment = mongoose.model("Equipment", equipmentSchema);
 
 
 // GET METHOD
@@ -36,25 +42,25 @@ app.get("/reservas/:customRouteName", function(req, res){
   const titleName2 = titleName1.replaceAll('-', ' ');
   switch (customRouteName) {
     case "capela":
-      res.render("equipamentos-reservados", {titleName: "Reservar " + titleName2, capPageName: titleName2, pageName: customRouteName, table1Name: ""});
+      res.render("equipamentos-reservados", {titleName: "Reservas " + titleName2, capPageName: titleName2, pageName: customRouteName, table1Name: ""});
       break;
     case "centrifugas":
-      res.render("equipamentos-reservados", {titleName: "Reservar " + titleName2, capPageName: titleName2, pageName: customRouteName, table1Name: "CE-01", table2Name: "CE-02"});
+      res.render("equipamentos-reservados", {titleName: "Reservas centrífugas", capPageName: "Centrífugas", pageName: customRouteName, table1Name: "CE-01", table2Name: "CE-02"});
       break;
-    case "fluxo":
-      res.render("equipamentos-reservados", {titleName: "Reservar " + titleName2, capPageName: titleName2, pageName: customRouteName, table1Name: "FL-01", table2Name: "FL-02"});
+    case "fluxos":
+      res.render("equipamentos-reservados", {titleName: "Reservas " + titleName2, capPageName: titleName2, pageName: customRouteName, table1Name: "FL-01", table2Name: "FL-02"});
       break;
     case "leitor-de-placas":
-      res.render("equipamentos-reservados", {titleName: "Reservar " + titleName2, capPageName: titleName2, pageName: customRouteName, table1Name: ""});
+      res.render("equipamentos-reservados", {titleName: "Reservas " + titleName2, capPageName: titleName2, pageName: customRouteName, table1Name: ""});
       break;
     case "qpcr":
-      res.render("equipamentos-reservados", {titleName: "Reservar qPCR", capPageName: "qPCR", pageName: customRouteName, table1Name: ""});
+      res.render("equipamentos-reservados", {titleName: "Reservas qPCR", capPageName: "qPCR", pageName: customRouteName, table1Name: ""});
       break;
     case "shakers":
-      res.render("equipamentos-reservados", {titleName: "Reservar " + titleName2, capPageName: titleName2, pageName: customRouteName, table1Name: "SH-01", table2Name: "SH-02"});
+      res.render("equipamentos-reservados", {titleName: "Reservas " + titleName2, capPageName: titleName2, pageName: customRouteName, table1Name: "SH-01", table2Name: "SH-02"});
       break;
     case "termocicladores":
-      res.render("equipamentos-reservados", {titleName: "Reservar " + titleName2, capPageName: titleName2, pageName: customRouteName, table1Name: "TC-01", table2Name: "TC-02", table3Name: "TC-03"});
+      res.render("equipamentos-reservados", {titleName: "Reservas " + titleName2, capPageName: titleName2, pageName: customRouteName, table1Name: "TC-01", table2Name: "TC-02", table3Name: "TC-03"});
       break;
     default: console.log("error");
 
@@ -69,30 +75,20 @@ app.get("/reservar/:customRouteName", function(req, res){
   const customRouteName = req.params.customRouteName;
   const titleName1 = _.capitalize(customRouteName);
   const titleName2 = titleName1.replaceAll('-', ' ');
+
+  // Equipment.findOne({codigo:})
+
   switch (customRouteName) {
-    case "capela":
-      res.render("reservar-equipamentos", {titleName: "Reservar " + titleName2, capPageName: titleName2, pageName: customRouteName, table1Name: ""});
-      break;
-    case "centrifugas":
-      res.render("reservar-equipamentos", {titleName: "Reservar " + titleName2, capPageName: titleName2, pageName: customRouteName, table1Name: "CE-01", table2Name: "CE-02"});
-      break;
-    case "fluxo":
-      res.render("reservar-equipamentos", {titleName: "Reservar " + titleName2, capPageName: titleName2, pageName: customRouteName, table1Name: "FL-01", table2Name: "FL-02"});
+    case "qpcr":
+      res.render("reservar-equipamentos", {titleName: "Reservar qPCR", pageName: "qPCR"});
       break;
     case "leitor-de-placas":
-      res.render("reservar-equipamentos", {titleName: "Reservar " + titleName2, capPageName: titleName2, pageName: customRouteName, table1Name: ""});
+      res.render("reservar-equipamentos", {titleName: "Reservar " + titleName2, pageName: titleName2});
       break;
-    case "qpcr":
-      res.render("reservar-equipamentos", {titleName: "Reservar qPCR", capPageName: "qPCR", pageName: customRouteName, table1Name: ""});
-      break;
-    case "shakers":
-      res.render("reservar-equipamentos", {titleName: "Reservar " + titleName2, capPageName: titleName2, pageName: customRouteName, table1Name: "SH-01", table2Name: "SH-02"});
-      break;
-    case "termocicladores":
-      res.render("reservar-equipamentos", {titleName: "Reservar " + titleName2, capPageName: titleName2, pageName: customRouteName, table1Name: "TC-01", table2Name: "TC-02", table3Name: "TC-03"});
-      break;
-    default: console.log("error");
-
+    case "capela":
+      res.render("reservar-equipamentos", {titleName: "Reservar " + titleName1, pageName: titleName1});
+    default:
+      res.render("reservar-equipamentos", {titleName: "Reservar " + customRouteName, pageName: customRouteName});
   }
 });
 
@@ -106,37 +102,22 @@ app.post("/reservar/:customRouteName", function(req, res){
   const nomeReservado = req.body.nomes;
   const equipamentoReservado = req.body.equipamentos;
 
-  const booked = new Book {
+  const booked = new Book ({
     dia: diaReservado,
     horario: horarioReservado,
     nome: nomeReservado,
     equipamento: equipamentoReservado
-  }
+  });
 
-  switch (customRouteName) {
-    case "capela":
-      
-      break;
-    case "centrifugas":
-
-      break;
-    case "fluxo":
-
-      break;
-    case "leitor de placas":
-
-      break;
-    case "qpcr":
-
-      break;
-    case "shakers":
-
-      break;
-    case "termocicladores":
-
-      break;
-    default: console.log("error");
-  }
+  Equipment.findOne({codigo: equipamentoReservado}, function(err, foundEquipment){
+    if (err) {
+      console.log(err);
+    } else {
+      foundEquipment.reservas.push(booked);
+      foundEquipment.save();
+      res.redirect("/reservar" + customRouteName2);
+    }
+  });
 });
 
 

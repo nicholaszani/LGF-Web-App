@@ -2,12 +2,12 @@
 
     <div class="container-fluid">
       <div class="table-responsive-md reserveTable">
-        <h2><%=capPageName%></h2>
+        <h2><%=pageName%></h2>
         <table class="table table-sm table-hover caption-top tableColor">
           <caption></caption>
           <thead>
             <tr>
-              <th scope="col"><%=table1Name%></th>
+              <th scope="col"></th>
               <th scope="col">Segunda</th>
               <th scope="col">Terça</th>
               <th scope="col">Quarta</th>
@@ -114,312 +114,66 @@
             </tr>
           </tbody>
         </table>
-        <% if (pageName != "qpcr" && pageName != "capela" && pageName != "leitor-de-placas"){ %>
-          <table class="table table-sm table-hover caption-top tableColor">
-            <caption></caption>
-            <thead>
-              <tr>
-                <th scope="col"><%=table2Name%></th>
-                <th scope="col">Segunda</th>
-                <th scope="col">Terça</th>
-                <th scope="col">Quarta</th>
-                <th scope="col">Quinta</th>
-                <th scope="col">Sexta</th>
-              </tr>
-            </thead>
-            <tbody class="table-group-divider">
-              <tr>
-                <th scope="row">7:00 - 8:00</th>
-                <td id="R1C1"></td>
-                <td id="R1C2"></td>
-                <td id="R1C3"></td>
-                <td id="R1C4"></td>
-                <td id="R1C5"></td>
-              </tr>
-              <tr>
-                <th scope="row">8:00 - 9:00</th>
-                <td id="R2C1"></td>
-                <td id="R2C2"></td>
-                <td id="R2C3"></td>
-                <td id="R2C4"></td>
-                <td id="R2C5"></td>
-              </tr>
-              <tr>
-                <th scope="row">9:00 - 10:00</th>
-                <td id="R3C1"></td>
-                <td id="R3C2"></td>
-                <td id="R3C3"></td>
-                <td id="R3C4"></td>
-                <td id="R3C5"></td>
-              </tr>
-              <tr>
-                <th scope="row">10:00 - 11:00</th>
-                <td id="R4C1"></td>
-                <td id="R4C2"></td>
-                <td id="R4C3"></td>
-                <td id="R4C4"></td>
-                <td id="R4C5"></td>
-              </tr>
-              <tr>
-                <th scope="row">11:00 - 12:00</th>
-                <td id="R5C1"></td>
-                <td id="R5C2"></td>
-                <td id="R5C3"></td>
-                <td id="R5C4"></td>
-                <td id="R5C5"></td>
-              </tr>
-              <tr>
-                <th scope="row">12:00 - 13:00</th>
-                <td id="R6C1"></td>
-                <td id="R6C2"></td>
-                <td id="R6C3"></td>
-                <td id="R6C4"></td>
-                <td id="R6C5"></td>
-              </tr>
-              <tr>
-                <th scope="row">13:00 - 14:00</th>
-                <td id="R7C1"></td>
-                <td id="R7C2"></td>
-                <td id="R7C3"></td>
-                <td id="R7C4"></td>
-                <td id="R7C5"></td>
-              </tr>
-              <tr>
-                <th scope="row">14:00 - 15:00</th>
-                <td id="R8C1"></td>
-                <td id="R8C2"></td>
-                <td id="R8C3"></td>
-                <td id="R8C4"></td>
-                <td id="R8C5"></td>
-              </tr>
-              <tr>
-                <th scope="row">15:00 - 16:00</th>
-                <td id="R9C1"></td>
-                <td id="R9C2"></td>
-                <td id="R9C3"></td>
-                <td id="R9C4"></td>
-                <td id="R9C5"></td>
-              </tr>
-              <tr>
-                <th scope="row">16:00 - 17:00</th>
-                <td id="R10C1"></td>
-                <td id="R10C2"></td>
-                <td id="R10C3"></td>
-                <td id="R10C4"></td>
-                <td id="R10C5"></td>
-              </tr>
-              <tr>
-                <th scope="row">17:00 - 18:00</th>
-                <td id="R11C1"></td>
-                <td id="R11C2"></td>
-                <td id="R11C3"></td>
-                <td id="R11C4"></td>
-                <td id="R11C5"></td>
-              </tr>
-              <tr>
-                <th scope="row">18:00 - 19:00</th>
-                <td id="R12C1"></td>
-                <td id="R12C2"></td>
-                <td id="R12C3"></td>
-                <td id="R12C4"></td>
-                <td id="R12C5"></td>
-              </tr>
-            </tbody>
-          </table>
-          <% if (pageName === "termocicladores"){ %>
-            <table class="table table-sm table-hover caption-top tableColor">
-              <caption></caption>
-              <thead>
-                <tr>
-                  <th scope="col"><%=table3Name%></th>
-                  <th scope="col">Segunda</th>
-                  <th scope="col">Terça</th>
-                  <th scope="col">Quarta</th>
-                  <th scope="col">Quinta</th>
-                  <th scope="col">Sexta</th>
-                </tr>
-              </thead>
-              <tbody class="table-group-divider">
-                <tr>
-                  <th scope="row">7:00 - 8:00</th>
-                  <td id="R1C1"></td>
-                  <td id="R1C2"></td>
-                  <td id="R1C3"></td>
-                  <td id="R1C4"></td>
-                  <td id="R1C5"></td>
-                </tr>
-                <tr>
-                  <th scope="row">8:00 - 9:00</th>
-                  <td id="R2C1"></td>
-                  <td id="R2C2"></td>
-                  <td id="R2C3"></td>
-                  <td id="R2C4"></td>
-                  <td id="R2C5"></td>
-                </tr>
-                <tr>
-                  <th scope="row">9:00 - 10:00</th>
-                  <td id="R3C1"></td>
-                  <td id="R3C2"></td>
-                  <td id="R3C3"></td>
-                  <td id="R3C4"></td>
-                  <td id="R3C5"></td>
-                </tr>
-                <tr>
-                  <th scope="row">10:00 - 11:00</th>
-                  <td id="R4C1"></td>
-                  <td id="R4C2"></td>
-                  <td id="R4C3"></td>
-                  <td id="R4C4"></td>
-                  <td id="R4C5"></td>
-                </tr>
-                <tr>
-                  <th scope="row">11:00 - 12:00</th>
-                  <td id="R5C1"></td>
-                  <td id="R5C2"></td>
-                  <td id="R5C3"></td>
-                  <td id="R5C4"></td>
-                  <td id="R5C5"></td>
-                </tr>
-                <tr>
-                  <th scope="row">12:00 - 13:00</th>
-                  <td id="R6C1"></td>
-                  <td id="R6C2"></td>
-                  <td id="R6C3"></td>
-                  <td id="R6C4"></td>
-                  <td id="R6C5"></td>
-                </tr>
-                <tr>
-                  <th scope="row">13:00 - 14:00</th>
-                  <td id="R7C1"></td>
-                  <td id="R7C2"></td>
-                  <td id="R7C3"></td>
-                  <td id="R7C4"></td>
-                  <td id="R7C5"></td>
-                </tr>
-                <tr>
-                  <th scope="row">14:00 - 15:00</th>
-                  <td id="R8C1"></td>
-                  <td id="R8C2"></td>
-                  <td id="R8C3"></td>
-                  <td id="R8C4"></td>
-                  <td id="R8C5"></td>
-                </tr>
-                <tr>
-                  <th scope="row">15:00 - 16:00</th>
-                  <td id="R9C1"></td>
-                  <td id="R9C2"></td>
-                  <td id="R9C3"></td>
-                  <td id="R9C4"></td>
-                  <td id="R9C5"></td>
-                </tr>
-                <tr>
-                  <th scope="row">16:00 - 17:00</th>
-                  <td id="R10C1"></td>
-                  <td id="R10C2"></td>
-                  <td id="R10C3"></td>
-                  <td id="R10C4"></td>
-                  <td id="R10C5"></td>
-                </tr>
-                <tr>
-                  <th scope="row">17:00 - 18:00</th>
-                  <td id="R11C1"></td>
-                  <td id="R11C2"></td>
-                  <td id="R11C3"></td>
-                  <td id="R11C4"></td>
-                  <td id="R11C5"></td>
-                </tr>
-                <tr>
-                  <th scope="row">18:00 - 19:00</th>
-                  <td id="R12C1"></td>
-                  <td id="R12C2"></td>
-                  <td id="R12C3"></td>
-                  <td id="R12C4"></td>
-                  <td id="R12C5"></td>
-                </tr>
-              </tbody>
-            </table>
-          <% } %>
-        <% } %>
       </div>
     </div>
 
     <div class="d-flex gap-5 justify-content-center container inputDiv">
       <form id="infosReservas" action="/reservar/<%=pageName%>" method="post">
-        <label for="dias">Escolha um dia:</label>
-        <select form="infosReservas" id="dias" name="dias">
-          <option value="" selected disabled hidden></option>
-          <option value="Segunda">Segunda</option>
-          <option value="Terça">Terça</option>
-          <option value="Quarta">Quarta</option>
-          <option value="Quinta">Quinta</option>
-          <option value="Sexta">Sexta</option>
-        </select>
-        <label for="horarios">Escolha um horário:</label>
-        <select form="infosReservas" id="horarios" name="horarios">
-          <option value="" selected disabled hidden></option>
-          <option value="7:00 - 8:00">7:00 - 8:00</option>
-          <option value="8:00 - 9:00">8:00 - 9:00</option>
-          <option value="9:00 - 10:00">9:00 - 10:00</option>
-          <option value="10:00 - 11:00">10:00 - 11:00</option>
-          <option value="11:00 - 12:00">11:00 - 12:00</option>
-          <option value="12:00 - 13:00">12:00 - 13:00</option>
-          <option value="13:00 - 14:00">13:00 - 14:00</option>
-          <option value="14:00 - 15:00">14:00 - 15:00</option>
-          <option value="15:00 - 16:00">15:00 - 16:00</option>
-          <option value="16:00 - 17:00">16:00 - 17:00</option>
-          <option value="17:00 - 18:00">17:00 - 18:00</option>
-          <option value="18:00 - 19:00">18:00 - 19:00</option>
-        </select>
-        <label for="nomes">Qual é seu nome?</label>
-        <select form="infosReservas" id="nomes" name="nomes">
-          <option value="" selected disabled hidden></option>
-          <option value="Ana Laura">Ana Laura</option>
-          <option value="Adriana">Adriana</option>
-          <option value="Bruno">Bruno</option>
-          <option value="Daniel">Daniel</option>
-          <option value="Juan">Juan</option>
-          <option value="Maria Fernanda">Maria Fernanda</option>
-          <option value="Mileny">Mileny</option>
-          <option value="Nery">Nery</option>
-          <option value="Nicholas">Nicholas</option>
-          <option value="Pamela">Pamela</option>
-          <option value="Pedro">Pedro</option>
-          <option value="Talita H.">Talita H.</option>
-          <option value="Talitha B.">Talitha B.</option>
-          <option value="Vitor">Vitor</option>
-          <option value="Willian">Willian</option>
-        </select>
-
-        <% if (pageName != "qpcr" && pageName != "capela" && pageName != "leitor-de-placas"){ %>
-          <label for="equipamentos">Escolha um equipamento:</label>
-          <select form="infosReservas" id="equipamentos" name="equipamentos">
-            <% switch (pageName){
-              case "centrifugas": %>
-                <option value="" selected disabled hidden></option>
-                <option value="CE-01">CE-01</option>
-                <option value="CE-02">CE-02</option>
-                <%  break; %>
-              <% case "fluxo": %>
-                <option value="" selected disabled hidden></option>
-                <option value="FL-01">FL-01</option>
-                <option value="FL-02">FL-02</option>
-                <% break; %>
-              <% case "shakers": %>
-                <option value="" selected disabled hidden></option>
-                <option value="SH-01">SH-01</option>
-                <option value="SH-02">SH-02</option>
-                <% break; %>
-              <% case "termocicladores": %>
-                <option value="" selected disabled hidden></option>
-                <option value="TC-01">TC-01</option>
-                <option value="TC-02">TC-02</option>
-                <option value="TC-03">TC-02</option>
-                <% break; %>
-              <% default: console.log("error"); %>
-          <%  } %>
-          </select>
-        <% } %>
-        <button type="submit" name="button">Reservar</button>
+        <div class="row">
+          <div class="col-lg-4 col-md-6 col-sm-12 py-3 alignCenter">
+            <label for="dias">Escolha um dia:</label>
+            <select form="infosReservas" id="dias" name="dias">
+              <option value="" selected disabled hidden></option>
+              <option value="Segunda">Segunda</option>
+              <option value="Terça">Terça</option>
+              <option value="Quarta">Quarta</option>
+              <option value="Quinta">Quinta</option>
+              <option value="Sexta">Sexta</option>
+            </select>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-12 py-3 alignCenter">
+            <label for="horarios">Escolha um horário:</label>
+            <select form="infosReservas" id="horarios" name="horarios">
+              <option value="" selected disabled hidden></option>
+              <option value="7:00 - 8:00">7:00 - 8:00</option>
+              <option value="8:00 - 9:00">8:00 - 9:00</option>
+              <option value="9:00 - 10:00">9:00 - 10:00</option>
+              <option value="10:00 - 11:00">10:00 - 11:00</option>
+              <option value="11:00 - 12:00">11:00 - 12:00</option>
+              <option value="12:00 - 13:00">12:00 - 13:00</option>
+              <option value="13:00 - 14:00">13:00 - 14:00</option>
+              <option value="14:00 - 15:00">14:00 - 15:00</option>
+              <option value="15:00 - 16:00">15:00 - 16:00</option>
+              <option value="16:00 - 17:00">16:00 - 17:00</option>
+              <option value="17:00 - 18:00">17:00 - 18:00</option>
+              <option value="18:00 - 19:00">18:00 - 19:00</option>
+            </select>
+          </div>
+          <div class="col-lg-4 col-md-12 col-sm-12 py-3 alignCenter">
+            <label for="nomes">Qual é seu nome?</label>
+            <select form="infosReservas" id="nomes" name="nomes">
+              <option value="" selected disabled hidden></option>
+              <option value="Ana Laura">Ana Laura</option>
+              <option value="Adriana">Adriana</option>
+              <option value="Bruno">Bruno</option>
+              <option value="Daniel">Daniel</option>
+              <option value="Juan">Juan</option>
+              <option value="Maria Fernanda">Maria Fernanda</option>
+              <option value="Mileny">Mileny</option>
+              <option value="Nery">Nery</option>
+              <option value="Nicholas">Nicholas</option>
+              <option value="Pamela">Pamela</option>
+              <option value="Pedro">Pedro</option>
+              <option value="Talita H.">Talita H.</option>
+              <option value="Talitha B.">Talitha B.</option>
+              <option value="Vitor">Vitor</option>
+              <option value="Willian">Willian</option>
+            </select>
+          </div>
+          <div class="col-12 alignCenter py-5">
+            <button class="btn btn-outline-dark" type="submit" name="button">Reservar</button>
+          </div>
+        </div>
       </form>
     </div>
 

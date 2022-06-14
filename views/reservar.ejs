@@ -1,15 +1,77 @@
 <%- include("header") -%>
 
-  <div class="container-fluid reservasPage">
-    <h2>Reservar</h2>
-    <br>
-    <a class="" href="/reservar/capela">Capela</a><br>
-    <a class="" href="/reservar/centrifugas">Centrífugas</a><br>
-    <a class="" href="/reservar/fluxo">Fluxos laminares</a><br>
-    <a class="" href="/reservar/leitor-de-placas">Leitor de placas</a><br>
-    <a class="" href="/reservar/qpcr">qPCR</a><br>
-    <a class="" href="/reservar/shakers">Shakers</a><br>
-    <a class="" href="/Reservar/termocicladores">Termocicladores</a><br>
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 py-5 my-5">
+      <div class="col my-3 alignCenter">
+        <div class="feature-icon d-inline-flex align-items-center bg-gradient justify-content-center fs-2 mb-3">
+          <img src="/images/capela.png" alt="hood-icon" style="width:50px">
+        </div>
+        <h5>Capela</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a class="nav-link p-0 text-muted" href="/reservar/capela">Reservar</a></li>
+        </ul>
+      </div>
+      <div class="col my-3 alignCenter">
+        <div class="feature-icon d-inline-flex align-items-center bg-gradient justify-content-center fs-2 mb-3">
+          <img src="/images/centrifuge.png" alt="centrifuge-icon" style="width:50px">
+        </div>
+        <h5>Centrífugas</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a class="nav-link p-0 text-muted" href="/reservar/CE-01">CE-01</a></li>
+          <li class="nav-item mb-2"><a class="nav-link p-0 text-muted" href="/reservar/CE-02">CE-02</a></li>
+        </ul>
+      </div>
+      <div class="col my-3 alignCenter">
+        <div class="feature-icon d-inline-flex align-items-center bg-gradient justify-content-center fs-2 mb-3">
+          <img src="/images/fluxo.png" alt="uv-icon" style="width:50px">
+        </div>
+        <h5>Fluxos</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a class="nav-link p-0 text-muted" href="/reservar/FL-01">FL-01</a></li>
+          <li class="nav-item mb-2"><a class="nav-link p-0 text-muted" href="/reservar/FL-03">FL-03</a></li>
+        </ul>
+      </div>
+      <div class="col my-3 alignCenter">
+        <div class="feature-icon d-inline-flex align-items-center bg-gradient justify-content-center fs-2 mb-3">
+          <img src="/images/microplaca.png" alt="microplate-icon" style="width:50px">
+        </div>
+        <h5>Leitor de placas</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a class="nav-link p-0 text-muted" href="/reservar/leitor-de-placas">Reservar</a></li>
+        </ul>
+      </div>
+      <div class="col my-3 alignCenter">
+        <div class="feature-icon d-inline-flex align-items-center bg-gradient justify-content-center fs-2 mb-3">
+          <img src="/images/qpcr-modified.png" alt="qpcr-icon" style="width:50px">
+        </div>
+        <h5>qPCR</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a class="nav-link p-0 text-muted" href="/reservar/qpcr">Reservar</a></li>
+        </ul>
+      </div>
+      <div class="col my-3 alignCenter">
+        <div class="feature-icon d-inline-flex align-items-center bg-gradient justify-content-center fs-2 mb-3">
+          <img src="/images/shaker.png" alt="shaker-icon" style="width:50px">
+        </div>
+        <h5>Shakers</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a class="nav-link p-0 text-muted" href="/reservar/SH-01">SH-01</a></li>
+          <li class="nav-item mb-2"><a class="nav-link p-0 text-muted" href="/reservar/SH-02">SH-02</a></li>
+        </ul>
+      </div>
+      <div class="col my-3 alignCenter">
+        <div class="feature-icon d-inline-flex align-items-center bg-gradient justify-content-center fs-2 mb-3">
+          <img src="/images/termociclador.png" alt="thermal-cycler-icon" style="width:50px">
+        </div>
+        <h5>Termocicladores</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a class="nav-link p-0 text-muted" href="/reservar/TC-01">TC-01</a></li>
+          <li class="nav-item mb-2"><a class="nav-link p-0 text-muted" href="/reservar/TC-02">TC-02</a></li>
+          <li class="nav-item mb-2"><a class="nav-link p-0 text-muted" href="/reservar/TC-03">TC-03</a></li>
+        </ul>
+      </div>
+    </div>
   </div>
+
 
 <%- include("footer") -%>

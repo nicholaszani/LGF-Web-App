@@ -23,7 +23,7 @@
               <a class="nav-link dropdown-toggle" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ver reservas</a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
                 <li><a class="dropdown-item" href="reservas/capela">Capela</a></li>
-                <li><a class="dropdown-item" href="/reservas/centrifugas">Centrífugas</a></li>
+                <li><a class="dropdown-item" href="reservas/centrifugas">Centrínfugas</a></li>
                 <li><a class="dropdown-item" href="/reservas/fluxo">Fluxos laminares</a></li>
                 <li><a class="dropdown-item" href="/reservas/leitor-de-placas">Leitor de placas</a></li>
                 <li><a class="dropdown-item" href="/reservas/qpcr">qPCR</a></li>
@@ -36,13 +36,38 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">Reservar</a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                <li><a class="dropdown-item" href="/reservar/capela">Capela</a></li>
-                <li><a class="dropdown-item" href="/reservar/centrifugas">Centrífugas</a></li>
-                <li><a class="dropdown-item" href="/reservar/fluxo">Fluxos laminares</a></li>
+                <li><a class="dropdown-item" href="/reservar/capela">Capela</a>
+                <li>
+                  <a class="dropdown-item">Centrífugas &#187;</a>
+                  <ul class="dropdown-menu dropdown-submenu">
+                    <li><a class="dropdown-item" href="/reservar/CE-01">CE-01</a></li>
+                    <li><a class="dropdown-item" href="/reservar/CE-02">CE-02</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a class="dropdown-item">Fluxos &#187;</a>
+                  <ul class="dropdown-menu dropdown-submenu">
+                    <li><a class="dropdown-item" href="/reservar/FL-01">FL-01</a></li>
+                    <li><a class="dropdown-item" href="/reservar/FL-03">FL-03</a></li>
+                  </ul>
+                </li>
                 <li><a class="dropdown-item" href="/reservar/leitor-de-placas">Leitor de placas</a></li>
                 <li><a class="dropdown-item" href="/reservar/qpcr">qPCR</a></li>
-                <li><a class="dropdown-item" href="/reservar/shakers">Shakers</a></li>
-                <li><a class="dropdown-item" href="/reservar/termocicladores">Termocicladores</a></li>
+                <li>
+                  <a class="dropdown-item">Shakers &#187;</a>
+                  <ul class="dropdown-menu dropdown-submenu">
+                    <li><a class="dropdown-item" href="/reservar/SH-01">SH-01</a></li>
+                    <li><a class="dropdown-item" href="/reservar/SH-02">SH-02</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a class="dropdown-item">Termocicladores &#187;</a>
+                  <ul class="dropdown-menu dropdown-submenu">
+                    <li><a class="dropdown-item" href="/reservar/TC-01">TC-01</a></li>
+                    <li><a class="dropdown-item" href="/reservar/TC-02">TC-02</a></li>
+                    <li><a class="dropdown-item" href="/reservar/TC-03">TC-03</a></li>
+                  </ul>
+                </li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="/reservar">Reservar</a></li>
               </ul>
