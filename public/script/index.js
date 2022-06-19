@@ -1,1 +1,0 @@
-const tableDiv = $("div.reserveTable");
