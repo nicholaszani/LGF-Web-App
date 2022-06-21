@@ -42,19 +42,19 @@ app.get("/reservas/:customRouteName", function(req, res){
   const titleName2 = titleName1.replaceAll('-', ' ');
   switch (customRouteName) {
     case "capela":
-      res.render("equipamentos-reservados", {titleName: "Reservas " + titleName2, capPageName: titleName2, pageName: customRouteName, table1Name: ""});
+      res.render("equipamentos-reservados", {titleName: "Reservas " + titleName2, capPageName: titleName2, pageName: customRouteName, table1Name: "Capela"});
       break;
     case "centrifugas":
       res.render("equipamentos-reservados", {titleName: "Reservas centrífugas", capPageName: "Centrífugas", pageName: customRouteName, table1Name: "CE-01", table2Name: "CE-02"});
       break;
-    case "fluxos":
-      res.render("equipamentos-reservados", {titleName: "Reservas " + titleName2, capPageName: titleName2, pageName: customRouteName, table1Name: "FL-01", table2Name: "FL-02"});
+    case "fluxo":
+      res.render("equipamentos-reservados", {titleName: "Reservas " + titleName2, capPageName: titleName2, pageName: customRouteName, table1Name: "FL-01", table2Name: "FL-03"});
       break;
     case "leitor-de-placas":
-      res.render("equipamentos-reservados", {titleName: "Reservas " + titleName2, capPageName: titleName2, pageName: customRouteName, table1Name: ""});
+      res.render("equipamentos-reservados", {titleName: "Reservas " + titleName2, capPageName: titleName2, pageName: customRouteName, table1Name: "leitor-de-placas"});
       break;
     case "qpcr":
-      res.render("equipamentos-reservados", {titleName: "Reservas qPCR", capPageName: "qPCR", pageName: customRouteName, table1Name: ""});
+      res.render("equipamentos-reservados", {titleName: "Reservas qPCR", capPageName: "qPCR", pageName: customRouteName, table1Name: "qPCR"});
       break;
     case "shakers":
       res.render("equipamentos-reservados", {titleName: "Reservas " + titleName2, capPageName: titleName2, pageName: customRouteName, table1Name: "SH-01", table2Name: "SH-02"});
@@ -97,6 +97,10 @@ app.get("/json/:customRouteName", function(req, res){
 
 app.get("/admin", function(req, res){
   res.render("admin", {titleName: "Admin"});
+});
+
+app.get("/sobre", function(req, res){
+  res.render("about", {titleName: "Sobre"});
 })
 
 //POST METHOD

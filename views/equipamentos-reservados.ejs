@@ -7,7 +7,11 @@
           <caption></caption>
           <thead>
             <tr>
-              <th scope="col"><%=table1Name%></th>
+              <% if(table1Name === "leitor-de-placas" || table1Name === "qPCR" || table1Name === "Capela"){ %>
+                <th scope="col"></th>
+              <% } else { %>
+                <th scope="col"><%=table1Name%></th>
+              <% } %>
               <th scope="col">Segunda</th>
               <th scope="col">Terça</th>
               <th scope="col">Quarta</th>
@@ -18,102 +22,121 @@
           <tbody class="table-group-divider">
             <tr>
               <th scope="row">7:00 - 8:00</th>
-              <td id="R1C1"></td>
-              <td id="R1C2"></td>
-              <td id="R1C3"></td>
-              <td id="R1C4"></td>
-              <td id="R1C5"></td>
+              <td id="Seg7H" value="1"></td>
+              <td id="Ter7H" value="1"></td>
+              <td id="Qua7H" value="1"></td>
+              <td id="Qui7H" value="1"></td>
+              <td id="Sex7H" value="1"></td>
             </tr>
             <tr>
               <th scope="row">8:00 - 9:00</th>
-              <td id="R2C1"></td>
-              <td id="R2C2"></td>
-              <td id="R2C3"></td>
-              <td id="R2C4"></td>
-              <td id="R2C5"></td>
+              <td id="Seg8H" value="1"></td>
+              <td id="Ter8H" value="1"></td>
+              <td id="Qua8H" value="1"></td>
+              <td id="Qui8H" value="1"></td>
+              <td id="Sex8H" value="1"></td>
             </tr>
             <tr>
               <th scope="row">9:00 - 10:00</th>
-              <td id="R3C1"></td>
-              <td id="R3C2"></td>
-              <td id="R3C3"></td>
-              <td id="R3C4"></td>
-              <td id="R3C5"></td>
+              <td id="Seg9H" value="1"></td>
+              <td id="Ter9H" value="1"></td>
+              <td id="Qua9H" value="1"></td>
+              <td id="Qui9H" value="1"></td>
+              <td id="Sex9H" value="1"></td>
             </tr>
             <tr>
               <th scope="row">10:00 - 11:00</th>
-              <td id="R4C1"></td>
-              <td id="R4C2"></td>
-              <td id="R4C3"></td>
-              <td id="R4C4"></td>
-              <td id="R4C5"></td>
+              <td id="Seg10H" value="1"></td>
+              <td id="Ter10H" value="1"></td>
+              <td id="Qua10H" value="1"></td>
+              <td id="Qui10H" value="1"></td>
+              <td id="Sex10H" value="1"></td>
             </tr>
             <tr>
               <th scope="row">11:00 - 12:00</th>
-              <td id="R5C1"></td>
-              <td id="R5C2"></td>
-              <td id="R5C3"></td>
-              <td id="R5C4"></td>
-              <td id="R5C5"></td>
+              <td id="Seg11H" value="1"></td>
+              <td id="Ter11H" value="1"></td>
+              <td id="Qua11H" value="1"></td>
+              <td id="Qui11H" value="1"></td>
+              <td id="Sex11H" value="1"></td>
             </tr>
             <tr>
               <th scope="row">12:00 - 13:00</th>
-              <td id="R6C1"></td>
-              <td id="R6C2"></td>
-              <td id="R6C3"></td>
-              <td id="R6C4"></td>
-              <td id="R6C5"></td>
+              <td id="Seg12H" value="1"></td>
+              <td id="Ter12H" value="1"></td>
+              <td id="Qua12H" value="1"></td>
+              <td id="Qui12H" value="1"></td>
+              <td id="Sex12H" value="1"></td>
             </tr>
             <tr>
               <th scope="row">13:00 - 14:00</th>
-              <td id="R7C1"></td>
-              <td id="R7C2"></td>
-              <td id="R7C3"></td>
-              <td id="R7C4"></td>
-              <td id="R7C5"></td>
+              <td id="Seg13H" value="1"></td>
+              <td id="Ter13H" value="1"></td>
+              <td id="Qua13H" value="1"></td>
+              <td id="Qui13H" value="1"></td>
+              <td id="Sex13H" value="1"></td>
             </tr>
             <tr>
               <th scope="row">14:00 - 15:00</th>
-              <td id="R8C1"></td>
-              <td id="R8C2"></td>
-              <td id="R8C3"></td>
-              <td id="R8C4"></td>
-              <td id="R8C5"></td>
+              <td id="Seg14H" value="1"></td>
+              <td id="Ter14H" value="1"></td>
+              <td id="Qua14H" value="1"></td>
+              <td id="Qui14H" value="1"></td>
+              <td id="Sex14H" value="1"></td>
             </tr>
             <tr>
               <th scope="row">15:00 - 16:00</th>
-              <td id="R9C1"></td>
-              <td id="R9C2"></td>
-              <td id="R9C3"></td>
-              <td id="R9C4"></td>
-              <td id="R9C5"></td>
+              <td id="Seg15H" value="1"></td>
+              <td id="Ter15H" value="1"></td>
+              <td id="Qua15H" value="1"></td>
+              <td id="Qui15H" value="1"></td>
+              <td id="Sex15H" value="1"></td>
             </tr>
             <tr>
               <th scope="row">16:00 - 17:00</th>
-              <td id="R10C1"></td>
-              <td id="R10C2"></td>
-              <td id="R10C3"></td>
-              <td id="R10C4"></td>
-              <td id="R10C5"></td>
+              <td id="Seg16H" value="1"></td>
+              <td id="Ter16H" value="1"></td>
+              <td id="Qua16H" value="1"></td>
+              <td id="Qui16H" value="1"></td>
+              <td id="Sex16H" value="1"></td>
             </tr>
             <tr>
               <th scope="row">17:00 - 18:00</th>
-              <td id="R11C1"></td>
-              <td id="R11C2"></td>
-              <td id="R11C3"></td>
-              <td id="R11C4"></td>
-              <td id="R11C5"></td>
+              <td id="Seg17H" value="1"></td>
+              <td id="Ter17H" value="1"></td>
+              <td id="Qua17H" value="1"></td>
+              <td id="Qui17H" value="1"></td>
+              <td id="Sex17H" value="1"></td>
             </tr>
             <tr>
               <th scope="row">18:00 - 19:00</th>
-              <td id="R12C1"></td>
-              <td id="R12C2"></td>
-              <td id="R12C3"></td>
-              <td id="R12C4"></td>
-              <td id="R12C5"></td>
+              <td id="Seg18H" value="1"></td>
+              <td id="Ter18H" value="1"></td>
+              <td id="Qua18H" value="1"></td>
+              <td id="Qui18H" value="1"></td>
+              <td id="Sex18H" value="1"></td>
             </tr>
+            <% if (table1Name.substring(0, 2) === "SH" || table1Name.substring(0, 2) === "TC"){ %>
+              <tr>
+                <th scope="row">Overnight</th>
+                <td id="SegOvn" value="1"></td>
+                <td id="TerOvn" value="1"></td>
+                <td id="QuaOvn" value="1"></td>
+                <td id="QuiOvn" value="1"></td>
+                <td id="SexOvn" value="1"></td>
+              </tr>
+            <% } %>
           </tbody>
         </table>
+        <script>
+          $(document).ready(function(){
+            $.getJSON("/json/" + "<%=table1Name%>", function(jd){
+              jd.reservas.forEach(function(reserva){
+                $("#" + reserva.dia + reserva.horario).filter('[value="1"]').text(reserva.nome);
+              });
+            });
+          });
+        </script>
         <% if (pageName != "qpcr" && pageName != "capela" && pageName != "leitor-de-placas"){ %>
           <table class="table table-sm table-hover caption-top tableColor">
             <caption></caption>
@@ -130,102 +153,121 @@
             <tbody class="table-group-divider">
               <tr>
                 <th scope="row">7:00 - 8:00</th>
-                <td id="R1C1"></td>
-                <td id="R1C2"></td>
-                <td id="R1C3"></td>
-                <td id="R1C4"></td>
-                <td id="R1C5"></td>
+                <td id="Seg7H2"></td>
+                <td id="Ter7H2"></td>
+                <td id="Qua7H2"></td>
+                <td id="Qui7H2"></td>
+                <td id="Sex7H2"></td>
               </tr>
               <tr>
                 <th scope="row">8:00 - 9:00</th>
-                <td id="R2C1"></td>
-                <td id="R2C2"></td>
-                <td id="R2C3"></td>
-                <td id="R2C4"></td>
-                <td id="R2C5"></td>
+                <td id="Seg8H2"></td>
+                <td id="Ter8H2"></td>
+                <td id="Qua8H2"></td>
+                <td id="Qui8H2"></td>
+                <td id="Sex8H2"></td>
               </tr>
               <tr>
                 <th scope="row">9:00 - 10:00</th>
-                <td id="R3C1"></td>
-                <td id="R3C2"></td>
-                <td id="R3C3"></td>
-                <td id="R3C4"></td>
-                <td id="R3C5"></td>
+                <td id="Seg9H2"></td>
+                <td id="Ter9H2"></td>
+                <td id="Qua9H2"></td>
+                <td id="Qui9H2"></td>
+                <td id="Sex9H2"></td>
               </tr>
               <tr>
                 <th scope="row">10:00 - 11:00</th>
-                <td id="R4C1"></td>
-                <td id="R4C2"></td>
-                <td id="R4C3"></td>
-                <td id="R4C4"></td>
-                <td id="R4C5"></td>
+                <td id="Seg10H2"></td>
+                <td id="Ter10H2"></td>
+                <td id="Qua10H2"></td>
+                <td id="Qui10H2"></td>
+                <td id="Sex10H2"></td>
               </tr>
               <tr>
                 <th scope="row">11:00 - 12:00</th>
-                <td id="R5C1"></td>
-                <td id="R5C2"></td>
-                <td id="R5C3"></td>
-                <td id="R5C4"></td>
-                <td id="R5C5"></td>
+                <td id="Seg11H2"></td>
+                <td id="Ter11H2"></td>
+                <td id="Qua11H2"></td>
+                <td id="Qui11H2"></td>
+                <td id="Sex11H2"></td>
               </tr>
               <tr>
                 <th scope="row">12:00 - 13:00</th>
-                <td id="R6C1"></td>
-                <td id="R6C2"></td>
-                <td id="R6C3"></td>
-                <td id="R6C4"></td>
-                <td id="R6C5"></td>
+                <td id="Seg12H2"></td>
+                <td id="Ter12H2"></td>
+                <td id="Qua12H2"></td>
+                <td id="Qui12H2"></td>
+                <td id="Sex12H2"></td>
               </tr>
               <tr>
                 <th scope="row">13:00 - 14:00</th>
-                <td id="R7C1"></td>
-                <td id="R7C2"></td>
-                <td id="R7C3"></td>
-                <td id="R7C4"></td>
-                <td id="R7C5"></td>
+                <td id="Seg13H2"></td>
+                <td id="Ter13H2"></td>
+                <td id="Qua13H2"></td>
+                <td id="Qui13H2"></td>
+                <td id="Sex13H2"></td>
               </tr>
               <tr>
                 <th scope="row">14:00 - 15:00</th>
-                <td id="R8C1"></td>
-                <td id="R8C2"></td>
-                <td id="R8C3"></td>
-                <td id="R8C4"></td>
-                <td id="R8C5"></td>
+                <td id="Seg14H2"></td>
+                <td id="Ter14H2"></td>
+                <td id="Qua14H2"></td>
+                <td id="Qui14H2"></td>
+                <td id="Sex14H2"></td>
               </tr>
               <tr>
                 <th scope="row">15:00 - 16:00</th>
-                <td id="R9C1"></td>
-                <td id="R9C2"></td>
-                <td id="R9C3"></td>
-                <td id="R9C4"></td>
-                <td id="R9C5"></td>
+                <td id="Seg15H2"></td>
+                <td id="Ter15H2"></td>
+                <td id="Qua15H2"></td>
+                <td id="Qui15H2"></td>
+                <td id="Sex15H2"></td>
               </tr>
               <tr>
                 <th scope="row">16:00 - 17:00</th>
-                <td id="R10C1"></td>
-                <td id="R10C2"></td>
-                <td id="R10C3"></td>
-                <td id="R10C4"></td>
-                <td id="R10C5"></td>
+                <td id="Seg16H2"></td>
+                <td id="Ter16H2"></td>
+                <td id="Qua16H2"></td>
+                <td id="Qui16H2"></td>
+                <td id="Sex16H2"></td>
               </tr>
               <tr>
                 <th scope="row">17:00 - 18:00</th>
-                <td id="R11C1"></td>
-                <td id="R11C2"></td>
-                <td id="R11C3"></td>
-                <td id="R11C4"></td>
-                <td id="R11C5"></td>
+                <td id="Seg17H2"></td>
+                <td id="Ter17H2"></td>
+                <td id="Qua17H2"></td>
+                <td id="Qui17H2"></td>
+                <td id="Sex17H2"></td>
               </tr>
               <tr>
                 <th scope="row">18:00 - 19:00</th>
-                <td id="R12C1"></td>
-                <td id="R12C2"></td>
-                <td id="R12C3"></td>
-                <td id="R12C4"></td>
-                <td id="R12C5"></td>
+                <td id="Seg18H2"></td>
+                <td id="Ter18H2"></td>
+                <td id="Qua18H2"></td>
+                <td id="Qui18H2"></td>
+                <td id="Sex18H2"></td>
               </tr>
+              <% if (table2Name.substring(0, 2) === "SH" || table2Name.substring(0, 2) === "TC"){ %>
+                <tr>
+                  <th scope="row">Overnight</th>
+                  <td id="SegOvn"></td>
+                  <td id="TerOvn"></td>
+                  <td id="QuaOvn"></td>
+                  <td id="QuiOvn"></td>
+                  <td id="SexOvn"></td>
+                </tr>
+              <% } %>
             </tbody>
           </table>
+          <script>
+            $(document).ready(function(){
+              $.getJSON("/json/" + "<%=table2Name%>", function(jd){
+                jd.reservas.forEach(function(reserva){
+                  $("#" + reserva.dia + reserva.horario + "2").text(reserva.nome);
+                });
+              });
+            });
+          </script>
           <% if (pageName === "termocicladores"){ %>
             <table class="table table-sm table-hover caption-top tableColor">
               <caption></caption>
@@ -242,102 +284,119 @@
               <tbody class="table-group-divider">
                 <tr>
                   <th scope="row">7:00 - 8:00</th>
-                  <td id="R1C1"></td>
-                  <td id="R1C2"></td>
-                  <td id="R1C3"></td>
-                  <td id="R1C4"></td>
-                  <td id="R1C5"></td>
+                  <td id="Seg7H3"></td>
+                  <td id="Ter7H3"></td>
+                  <td id="Qua7H3"></td>
+                  <td id="Qui7H3"></td>
+                  <td id="Sex7H3"></td>
                 </tr>
                 <tr>
                   <th scope="row">8:00 - 9:00</th>
-                  <td id="R2C1"></td>
-                  <td id="R2C2"></td>
-                  <td id="R2C3"></td>
-                  <td id="R2C4"></td>
-                  <td id="R2C5"></td>
+                  <td id="Seg8H3"></td>
+                  <td id="Ter8H3"></td>
+                  <td id="Qua8H3"></td>
+                  <td id="Qui8H3"></td>
+                  <td id="Sex8H3"></td>
                 </tr>
                 <tr>
                   <th scope="row">9:00 - 10:00</th>
-                  <td id="R3C1"></td>
-                  <td id="R3C2"></td>
-                  <td id="R3C3"></td>
-                  <td id="R3C4"></td>
-                  <td id="R3C5"></td>
+                  <td id="Seg9H3"></td>
+                  <td id="Ter9H3"></td>
+                  <td id="Qua9H3"></td>
+                  <td id="Qui9H3"></td>
+                  <td id="Sex9H3"></td>
                 </tr>
                 <tr>
                   <th scope="row">10:00 - 11:00</th>
-                  <td id="R4C1"></td>
-                  <td id="R4C2"></td>
-                  <td id="R4C3"></td>
-                  <td id="R4C4"></td>
-                  <td id="R4C5"></td>
+                  <td id="Seg10H3"></td>
+                  <td id="Ter10H3"></td>
+                  <td id="Qua10H3"></td>
+                  <td id="Qui10H3"></td>
+                  <td id="Sex10H3"></td>
                 </tr>
                 <tr>
                   <th scope="row">11:00 - 12:00</th>
-                  <td id="R5C1"></td>
-                  <td id="R5C2"></td>
-                  <td id="R5C3"></td>
-                  <td id="R5C4"></td>
-                  <td id="R5C5"></td>
+                  <td id="Seg11H3"></td>
+                  <td id="Ter11H3"></td>
+                  <td id="Qua11H3"></td>
+                  <td id="Qui11H3"></td>
+                  <td id="Sex11H3"></td>
                 </tr>
                 <tr>
                   <th scope="row">12:00 - 13:00</th>
-                  <td id="R6C1"></td>
-                  <td id="R6C2"></td>
-                  <td id="R6C3"></td>
-                  <td id="R6C4"></td>
-                  <td id="R6C5"></td>
+                  <td id="Seg12H3"></td>
+                  <td id="Ter12H3"></td>
+                  <td id="Qua12H3"></td>
+                  <td id="Qui12H3"></td>
+                  <td id="Sex12H3"></td>
                 </tr>
                 <tr>
                   <th scope="row">13:00 - 14:00</th>
-                  <td id="R7C1"></td>
-                  <td id="R7C2"></td>
-                  <td id="R7C3"></td>
-                  <td id="R7C4"></td>
-                  <td id="R7C5"></td>
+                  <td id="Seg13H3"></td>
+                  <td id="Ter13H3"></td>
+                  <td id="Qua13H3"></td>
+                  <td id="Qui13H3"></td>
+                  <td id="Sex13H3"></td>
                 </tr>
                 <tr>
                   <th scope="row">14:00 - 15:00</th>
-                  <td id="R8C1"></td>
-                  <td id="R8C2"></td>
-                  <td id="R8C3"></td>
-                  <td id="R8C4"></td>
-                  <td id="R8C5"></td>
+                  <td id="Seg14H3"></td>
+                  <td id="Ter14H3"></td>
+                  <td id="Qua14H3"></td>
+                  <td id="Qui14H3"></td>
+                  <td id="Sex14H3"></td>
                 </tr>
                 <tr>
                   <th scope="row">15:00 - 16:00</th>
-                  <td id="R9C1"></td>
-                  <td id="R9C2"></td>
-                  <td id="R9C3"></td>
-                  <td id="R9C4"></td>
-                  <td id="R9C5"></td>
+                  <td id="Seg15H3"></td>
+                  <td id="Ter15H3"></td>
+                  <td id="Qua15H3"></td>
+                  <td id="Qui15H3"></td>
+                  <td id="Sex15H3"></td>
                 </tr>
                 <tr>
                   <th scope="row">16:00 - 17:00</th>
-                  <td id="R10C1"></td>
-                  <td id="R10C2"></td>
-                  <td id="R10C3"></td>
-                  <td id="R10C4"></td>
-                  <td id="R10C5"></td>
+                  <td id="Seg16H3"></td>
+                  <td id="Ter16H3"></td>
+                  <td id="Qua16H3"></td>
+                  <td id="Qui16H3"></td>
+                  <td id="Sex16H3"></td>
                 </tr>
                 <tr>
                   <th scope="row">17:00 - 18:00</th>
-                  <td id="R11C1"></td>
-                  <td id="R11C2"></td>
-                  <td id="R11C3"></td>
-                  <td id="R11C4"></td>
-                  <td id="R11C5"></td>
+                  <td id="Seg17H3"></td>
+                  <td id="Ter17H3"></td>
+                  <td id="Qua17H3"></td>
+                  <td id="Qui17H3"></td>
+                  <td id="Sex17H3"></td>
                 </tr>
                 <tr>
                   <th scope="row">18:00 - 19:00</th>
-                  <td id="R12C1"></td>
-                  <td id="R12C2"></td>
-                  <td id="R12C3"></td>
-                  <td id="R12C4"></td>
-                  <td id="R12C5"></td>
+                  <td id="Ter18H3"></td>
+                  <td id="Seg18H3"></td>
+                  <td id="Qua18H3"></td>
+                  <td id="Qui18H3"></td>
+                  <td id="Sex18H3"></td>
+                </tr>
+                <tr>
+                  <th scope="row">Overnight</th>
+                  <td id="SegOvn3"></td>
+                  <td id="TerOvn3"></td>
+                  <td id="QuaOvn3"></td>
+                  <td id="QuiOvn3"></td>
+                  <td id="SexOvn3"></td>
                 </tr>
               </tbody>
             </table>
+            <script>
+              $(document).ready(function(){
+                $.getJSON("/json/" + "<%=table3Name%>", function(jd){
+                  jd.reservas.forEach(function(reserva){
+                    $("#" + reserva.dia + reserva.horario + "3").text(reserva.nome);
+                  });
+                });
+              });
+            </script>
           <% } %>
         <% } %>
       </div>

@@ -112,6 +112,16 @@
               <td id="Qui18H" value=""></td>
               <td id="Sex18H" value=""></td>
             </tr>
+            <% if (routeName.substring(0, 2) === "SH" || routeName.substring(0, 2) === "TC"){ %>
+              <tr>
+                <th scope="row">Overnight</th>
+                <td id="SegOvn" value=""></td>
+                <td id="TerOvn" value=""></td>
+                <td id="QuaOvn" value=""></td>
+                <td id="QuiOvn" value=""></td>
+                <td id="SexOvn" value=""></td>
+              </tr>
+            <% } %>
           </tbody>
         </table>
       </div>
@@ -166,6 +176,9 @@
               <option value="16H">16:00 - 17:00</option>
               <option value="17H">17:00 - 18:00</option>
               <option value="18H">18:00 - 19:00</option>
+              <% if (routeName.substring(0, 2) === "SH" || routeName.substring(0, 2) === "TC"){ %>
+                <option value="Ovn">Overnight</option>
+              <% } %>
             </select>
           </div>
           <div class="col-lg-4 col-md-12 col-sm-12 py-3 alignCenter">
