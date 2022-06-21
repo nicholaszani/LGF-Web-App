@@ -5,7 +5,7 @@ const _ = require("lodash");
 const app = express();
 
 app.use(express.urlencoded({extended: true}));
-app.use(express.static("/public"));
+app.use(express.static("public"));
 app.set('view engine', 'ejs');
 mongoose.connect("mongodb+srv://admin-nicholas:ninizani@cluster0.m0nn8.mongodb.net/reservasDB?retryWrites=true&w=majority");
 
