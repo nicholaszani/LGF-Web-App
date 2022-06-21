@@ -1,12 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const https = require("https");
 const _ = require("lodash");
 const app = express();
 
 app.use(express.urlencoded({extended: true}));
-app.use(express.static(__dirname + "/public"));
+app.use(express.static("/public"));
 app.set('view engine', 'ejs');
-mongoose.connect("mongodb://localhost:27017/reservasDB");
+mongoose.connect("mongodb+srv://admin-nicholas:ninizani@cluster0.m0nn8.mongodb.net/reservasDB?retryWrites=true&w=majority");
 
 
 //MONGODB
@@ -176,6 +177,11 @@ app.post("/admin", (req, res) =>{
 
 
 //CONNECTION
-app.listen(3000, function(){
-  console.log("Server is up and running on port 3000");
+let port = process.env.PORT;
+if (port == null || port == ""){
+  port = 3000;
+}
+
+app.listen(port, function(){
+  console.log("Server has started successfully");
 });

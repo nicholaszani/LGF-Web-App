@@ -17,6 +17,9 @@
   ],
   "author": "Nicholas C. Zani",
   "license": "ISC",
+  "engines": {
+    "node": "16.15.0"
+  },
   "bugs": {
     "url": "https://github.com/nicholaszani/LGF-Web-App/issues"
   },
