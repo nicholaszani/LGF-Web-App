@@ -75,20 +75,29 @@ app.get("/reservar/:customRouteName", function(req, res){
   const customRouteName = req.params.customRouteName;
   const titleName1 = _.capitalize(customRouteName);
   const titleName2 = titleName1.replaceAll('-', ' ');
-  //renderizar foundEquipments em reservar-equipamentos.ejs na forma de código js.
+
+  if (customRouteName === "leitor-de-placas") {
+    res.render("reservar-equipamentos", {titleName: "Reservar " + titleName2, pageName: titleName2, routeName: customRouteName});
+  } else {
+    res.render("reservar-equipamentos", {titleName: "Reservar " + customRouteName, pageName: customRouteName, routeName: customRouteName});
+  }
+
+});
+
+app.get("/json/:customRouteName", function(req, res){
+  const customRouteName = req.params.customRouteName;
   Equipment.findOne({codigo: customRouteName}, 'reservas', (err, foundEquipments) => {
-    if(err) {
+    if(err){
       console.log(err);
     } else {
-      if (customRouteName === "leitor-de-placas") {
-        res.render("reservar-equipamentos", {titleName: "Reservar " + titleName2, pageName: titleName2, routeName: customRouteName, reservesArray: foundEquipments});
-      } else {
-        res.render("reservar-equipamentos", {titleName: "Reservar " + customRouteName, pageName: customRouteName, routeName: customRouteName, reservesArray: foundEquipments});
-      }
+      res.send(foundEquipments);
     }
   });
 });
 
+app.get("/admin", function(req, res){
+  res.render("admin", {titleName: "Admin"});
+})
 
 //POST METHOD
 app.post("/reservar/:customRouteName", function(req, res){
@@ -117,15 +126,49 @@ app.post("/reservar/:customRouteName", function(req, res){
         res.redirect("/reservar/" + customRouteName);
       } else {
         if (foundEquipment.codigo === customRouteName) {
-          foundEquipment.reservas.push(booked);
-          foundEquipment.save();
-          res.redirect("/reservar/" + customRouteName);
+          if (foundEquipment.reservas.length === 0){
+            foundEquipment.reservas.push(booked);
+            foundEquipment.save();
+            res.redirect("/reservar/" + customRouteName);
+          } else {
+            foundEquipment.reservas.forEach(function(reserva){
+              if (reserva.dia !== diaReservado && reserva.horario !== horarioReservado){
+                foundEquipment.reservas.push(booked);
+                foundEquipment.save();
+                res.redirect("/reservar/" + customRouteName);
+              } else {
+                res.redirect("/reservar/" + customRouteName);
+              }
+            });
+          }
         }
       }
     }
   });
 });
 
+app.post("/delete", (req, res) => {
+  const equipamentoReserva = req.body.equipamento;
+  const idReserva = req.body.idReserva;
+
+  Equipment.findOneAndUpdate({codigo: equipamentoReserva}, {$pull: {reservas: {_id: idReserva}}}, function(err, result){
+    if(err){
+      console.log(err);
+    } else {
+      res.redirect("/reservar/" + equipamentoReserva);
+    }
+  })
+});
+
+app.post("/admin", (req, res) =>{
+  Equipment.deleteMany({}, (err) =>{
+    if (err) {
+      console.log(err);
+    } else {
+      res.redirect("/admin");
+    }
+  });
+});
 
 
 //CONNECTION
