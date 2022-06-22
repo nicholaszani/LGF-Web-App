@@ -131,19 +131,9 @@ app.post("/reservar/:customRouteName", function(req, res){
         res.redirect("/reservar/" + customRouteName);
       } else {
         if (foundEquipment.codigo === customRouteName) {
-          if (foundEquipment.reservas.length === 0){
-            foundEquipment.reservas.push(booked);
-            foundEquipment.save();
-            res.redirect("/reservar/" + customRouteName);
-          } else {
-            foundEquipment.reservas.forEach(function(reserva){
-              if (reserva.dia === diaReservado && reserva.horario === horarioReservado){
-                res.redirect("/reservar/" + customRouteName);
-              }
-            foundEquipment.reservas.push(booked);
-            foundEquipment.save();
-            res.redirect("/reservar/" + customRouteName);
-            });
+          foundEquipment.reservas.push(booked);
+          foundEquipment.save();
+          res.redirect("/reservar/" + customRouteName);
           }
         }
       }

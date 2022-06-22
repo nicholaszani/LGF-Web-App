@@ -233,7 +233,7 @@
             </select>
           </div>
           <div class="col-12 alignCenter py-5">
-            <button class="btn btn-outline-dark" type="submit" name="reservarButton" value="<%=routeName%>">Reservar</button>
+            <button class="btn btn-outline-dark" id="submitButton" type="submit" name="reservarButton" value="<%=routeName%>">Reservar</button>
           </div>
         </div>
       </form>
@@ -246,6 +246,28 @@
               $("#" + reserva.dia + reserva.horario).attr("value", reserva._id);
             });
           });
+        });
+
+        var selectNomes = $('select[name=nomes] option').filter(':selected').val();
+        var selectHorarios = $('select[name=horarios] option').filter(':selected').val();
+        var selectDias = $('select[name=dias] option').filter(':selected').val();
+        if (selectHorarios == "disabled" || selectNomes == "disabled" || selectDias == "disabled"){
+          $("#submitButton").prop("disabled", true);
+        }
+        $("select").on("input", function(){
+          selectNomes = $('select[name=nomes] option').filter(':selected').val();
+          selectHorarios = $('select[name=horarios] option').filter(':selected').val();
+          selectDias = $('select[name=dias] option').filter(':selected').val();
+          if (selectHorarios == "disabled" || selectNomes == "disabled" || selectDias == "disabled"){
+            $("#submitButton").prop("disabled", true);
+          } else {
+            if($("#" + selectDias + selectHorarios).text() !== ""){
+              alert("Já existe uma reserva para o dia e o horário selecionados.")
+              $("#submitButton").prop("disabled", true);
+            } else {
+              $("#submitButton").prop("disabled", false);
+            }
+          }
         });
       </script>
     </div>
