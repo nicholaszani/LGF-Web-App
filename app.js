@@ -134,7 +134,6 @@ app.post("/reservar/:customRouteName", function(req, res){
           foundEquipment.reservas.push(booked);
           foundEquipment.save();
           res.redirect("/reservar/" + customRouteName);
-          }
         }
       }
     }
