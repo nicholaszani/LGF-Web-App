@@ -100,9 +100,13 @@ app.get("/admin", function(req, res){
   res.render("admin", {titleName: "Admin"});
 });
 
-app.get("/sobre", function(req, res){
+app.get("/about", function(req, res){
   res.render("about", {titleName: "Sobre"});
-})
+});
+
+app.get("/planilhas", function(req, res){
+  res.render("planilhas", {titleName: "Planilhas"});
+});
 
 //POST METHOD
 app.post("/reservar/:customRouteName", function(req, res){

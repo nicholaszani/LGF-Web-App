@@ -1,3 +1,4 @@
+/* General */
 .greyBG {
   background-color: #E5E8E8;
 }
@@ -6,17 +7,18 @@
   padding: 3% 7%;
 }
 
+.bodyColor {
+  background-color: #E5E8E8;
+}
+
+.alignCenter {
+  text-align: center;
+}
+
+
+/* NavBar */
 .navbar-brand {
   padding-left: 1%;
-}
-
-.footerContainer {
-  padding-top: 15px;
-  padding-bottom: 10px;
-}
-
-.tableColor {
-  background-color:#F5F5F5;
 }
 
 .navbar {
@@ -34,45 +36,22 @@
   font-size: 1.2rem;
 }
 
-.bigHeading {
-  font-size: 3rem;
-  line-height: 1.5;
-}
-
-#title {
-  text-align:left;
-}
-
-.heroesImg {
-  width: 110px;
-  background-color: #E5E8E8;
-}
-
-.bodyColor {
-  background-color: #E5E8E8;
-}
-
-.inputDiv {
-  padding: 0 0 10%;
-}
-
-.reservasPage {
-  line-height: 1.5;
-}
-
 .dropdown-menu li {
 position: relative;
 }
+
 .dropdown-menu .dropdown-submenu {
 display: none;
 position: absolute;
 left: 100%;
 top: -7px;
 }
+
 .dropdown-menu .dropdown-submenu-left {
 right: 100%;
 left: auto;
 }
+
 .dropdown-menu > li:hover > .dropdown-submenu {
 display: block;
 }
@@ -80,6 +59,51 @@ display: block;
 .nav-link {
   text-align: center;
 }
-.alignCenter {
-  text-align: center;
+
+
+/* Footer */
+.footerContainer {
+  padding-top: 15px;
+  padding-bottom: 10px;
+}
+
+.tableColor {
+  background-color:#F5F5F5;
+}
+
+
+/* HomePAGE */
+.bigHeading {
+  font-size: 3rem;
+  line-height: 1.5;
+}
+
+.heroesImg {
+  width: 110px;
+  background-color: #E5E8E8;
+}
+
+
+/* TitleSECTION */
+#title {
+  text-align:left;
+}
+
+
+/* reservasPAGE */
+.reservasPage {
+  line-height: 1.5;
+}
+
+
+/* reservar-equipamentosPAGE */
+.inputDiv {
+  padding: 0 0 10%;
+}
+
+
+/* planilhasPAGE */
+.planilhaSpacing {
+  padding: 3rem 0;
+  margin: 5.5rem 0;
 }
