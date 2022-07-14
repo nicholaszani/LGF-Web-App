@@ -48,7 +48,7 @@ app.get("/reservas/:customRouteName", function(req, res){
     case "centrifugas":
       res.render("equipamentos-reservados", {titleName: "Reservas centrífugas", capPageName: "Centrífugas", pageName: customRouteName, table1Name: "CE-01", table2Name: "CE-02"});
       break;
-    case "fluxo":
+    case "fluxos":
       res.render("equipamentos-reservados", {titleName: "Reservas " + titleName2, capPageName: titleName2, pageName: customRouteName, table1Name: "FL-01", table2Name: "FL-03"});
       break;
     case "leitor-de-placas":
