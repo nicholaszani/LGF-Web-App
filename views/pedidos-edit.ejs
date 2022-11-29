@@ -1,0 +1,62 @@
+<%- include("header") -%>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 alignCenter">
+            <h5>Pedido</h5>
+            <p><%=pedidoObject.pedido%></p>
+            <h5>Autor</h5>
+            <p><%=pedidoObject.autor%></p>
+            <h5>Data</h5>
+            <p><%=pedidoObject.data%></p>
+            <h5>Status</h5>
+            <p><%=pedidoObject.status%></p>
+            <h5>Update</h5>
+            <p><%=pedidoObject.update%></p>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 alignCenter">
+            <form id="infosUpdate" action="/pedidos/admin/update" method="POST">
+                <label for="status" id="statusLabel">Adicionar update</label>
+                <br>
+                <select form="infosUpdate" id="status" name="status">
+                    <option value="disabled" selected disabled hidden></option>
+                    <option value="Aguardando entrega">Aguardando entrega</option>
+                    <option value="Comprado pelo Pedro">Comprado pelo Pedro</option>
+                    <option value="Comprado pela Eglee">Comprado pela Eglee</option>
+                    <option value="Comprado por outro">Comprado por outro</option>
+                    <option value="Consultar observações">Consultar observações</option>
+                    <option value="Não pôde ser comprado">Não pôde ser comprado</option>
+                    <option value="Problema na entrega">Problema na entrega</option>
+                    <option value="Problema no pedido">Problema no pedido</option>
+                    <option value="Repassado para Eglee">Repassado para Eglee</option>
+                </select>
+                <input type="hidden" name="dateInput" id="dateInput" value=""></input>
+                <input type="hidden" name="id" id="id" value="<%=pedidoObject._id%>">
+                <br>
+                <label for="observation" id="observationLabel">Adicionar observação (opcional)</label>
+                <br>
+                <textarea name="observation" id="observation" cols="30" rows="5" placeholder="Descreva brevemente o status, adicione informações sobre o prazo de entrega, etc." value=""></textarea>
+                <br>
+                <button id="updateButton" class="btn btn-outline-dark marginButton" type="submit" disabled="true">Enviar</button>
+            </form>
+            <script>
+                $(document).ready(function(){
+                    var currentDate = new Date();
+                    var date = currentDate.getDate() + "/" + (currentDate.getMonth()+1)  + "/" + currentDate.getFullYear();
+                    $("#dateInput").val(date);
+                });
+                    
+                $("select").on("input", function(){
+                    selectStatus = $('select[name=status] option').filter(':selected').val();
+                    if (selectStatus == "disabled"){
+                        $("#updateButton").prop("disabled", true);
+                    } else {
+                        $("#updateButton").prop("disabled", false);
+                    }
+                });
+            </script>
+        </div>
+    </div>
+</div>
+
+<%- include("footer") -%>

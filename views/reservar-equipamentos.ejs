@@ -164,7 +164,7 @@
           const answer = window.confirm("Deseja cancelar a reserva: '" + nome + ", " + dia + ", " + horario + "'?" );
           if (answer == true){
             const idReserva = $(this).attr("value")
-            $.post("/delete", {idReserva: idReserva, equipamento: "<%=pageName%>"})
+            $.post("/delete/reserva", {idReserva: idReserva, equipamento: "<%=pageName%>"})
               .done(function(data){
                 window.location.reload();
                 alert("Reserva cancelada.");

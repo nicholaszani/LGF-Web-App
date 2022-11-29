@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%=titleName%></title>
+    <link rel="shortcut icon" type="image/x-icon" href="/public/images/favicon.ico">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
@@ -26,7 +27,7 @@
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
                 <li><a class="dropdown-item" href="/reservas/capela">Capela</a></li>
                 <li><a class="dropdown-item" href="/reservas/centrifugas">Centrífugas</a></li>
-                <li><a class="dropdown-item" href="/reservas/fluxo">Fluxos laminares</a></li>
+                <li><a class="dropdown-item" href="/reservas/fluxos">Fluxos laminares</a></li>
                 <li><a class="dropdown-item" href="/reservas/leitor-de-placas">Leitor de placas</a></li>
                 <li><a class="dropdown-item" href="/reservas/qpcr">qPCR</a></li>
                 <li><a class="dropdown-item" href="/reservas/shakers">Shakers</a></li>
@@ -38,7 +39,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">Reservar</a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                <li><a class="dropdown-item" href="/reservar/Capela">Capela</a>
+                <li><a class="dropdown-item" href="/reservar/Capela">Capela</a></li>
                 <li>
                   <a class="dropdown-item">Centrífugas &#187;</a>
                   <ul class="dropdown-menu dropdown-submenu">
@@ -74,12 +75,26 @@
                 <li><a class="dropdown-item" href="/reservar">Reservar</a></li>
               </ul>
             </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/about">Sobre</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pedidos</a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                <li><a class="dropdown-item" href="/pedidos">Fazer pedidos</a></li>
+                <li><a class="dropdown-item" href="/pedidos/admin">Gerenciar pedidos</a></li>
+              </ul>
             </li>
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="/planilhas">Planilhas</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/about">Sobre</a>
+            </li>
           </ul>
+          <% if (titleName === "Admin") { %>
+            <ul class="nav justify-content-end">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/logout">Log out</a>
+              </li>
+            </ul>
+          <% } %>
         </div>
       </nav>

@@ -1,0 +1,128 @@
+<%- include("header") -%>
+
+<div class="container-fluid pedidosContainer1">
+    <div class="table-responsive-md">
+        <h2>Pedidos</h2>
+        <table class="table table-sm table-hover caption-top tableColor">
+            <caption></caption>
+            <thead>
+                <tr>
+                    <th scope="col">Pedido</th>
+                    <th scope="col">Autor</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Update</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (pedidosArray.length > 0) { %>
+                    <% var id = 0; %>
+                    <% pedidosArray.map(({ pedido, autor, data, status, update, _id, observation })=>{ %>
+                        <tr value="<%=_id%>">
+                            <td id="p<%=_id%>"><%= pedido %></td>
+                            <td id="a<%=_id%>"><%= autor %></td>
+                            <td id="d<%=_id%>"><%= data %></td>
+                            <td><%= status %></td>
+                            <td><%= update %></td>
+                            <td style="width: 80px;">
+                                <% if (observation !== "") { %>
+                                    <a id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: inherit; text-decoration:none">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                        </svg>
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                                        <li class="dropdown-item"><%= observation %></li>
+                                    </ul>
+                                <% } %>
+                                <button class="btn" id="<%=_id%>" onclick="deletePedido(this.id)">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                    </svg>
+                                </button> 
+                            </td>
+                        </tr>   
+                    <% }) %>
+                    <script>
+                        const deletePedido = (buttonId) => {
+                            const id = buttonId;
+                            const pedido = $(`#p${id}`).text();
+                            const autor = $(`#a${id}`).text();
+                            const data = $(`#d${id}`).text();
+                            const answer = window.confirm(`Deseja cancelar o pedido: "${pedido}", feito em ${data} por ${autor}?`);
+                            if (answer == true){
+                                console.log("1");
+                                $.post("/delete/pedido", {idPedido: id}).done(function(data){
+                                    window.location.reload();
+                                        alert("Pedido cancelado.");
+                                });
+                                console.log("2"); 
+                            }
+                        } 
+                    </script>
+                <% } else { %>   
+                    <tr>
+                        <td>Nenhum pedido feito</td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="container pedidosContainer">
+    <form id="infosPedidos" action="/pedidos" method="POST">
+        <div class="row">
+            <div class="alignCenter">
+                <label for="nomes" class="paddingLabel">Qual é seu nome?</label>
+                <br>
+                <select form="infosPedidos" id="nomes" name="nomes">
+                    <option value="disabled" selected disabled hidden></option>
+                    <option value="Ana Laura">Ana Laura</option>
+                    <option value="Adriana">Adriana</option>
+                    <option value="Bruno">Bruno</option>
+                    <option value="Daniel">Daniel</option>
+                    <option value="Juan">Juan</option>
+                    <option value="Maria Fernanda">Maria Fernanda</option>
+                    <option value="Mileny">Mileny</option>
+                    <option value="Nery">Nery</option>
+                    <option value="Nicholas">Nicholas</option>
+                    <option value="Pamela">Pamela</option>
+                    <option value="Pedro">Pedro</option>
+                    <option value="Talita H.">Talita H.</option>
+                    <option value="Talitha B.">Talitha B.</option>
+                    <option value="Vitor">Vitor</option>
+                    <option value="Willian">Willian</option>
+                </select>
+                <input type="hidden" name="dateInput" id="dateInput" value=""></input>
+            </div>
+            <div class="alignCenter">
+                <label class="paddingLabel" for="pedidoInput">O que quer pedir?</label>
+                <br>
+                <textarea id="pedidoInput" name="pedidoInput" cols="30" rows="2"></textarea>
+            </div>
+            <div class="alignCenter">
+                <button class="btn btn-outline-dark marginButton" disabled="true" id="submitButton" name="submitButton" value="submitPedidos">Realizar pedido</button>
+                <script>
+                    $(document).ready(function(){
+                        var currentDate = new Date();
+                        var date = currentDate.getDate() + "/" + (currentDate.getMonth()+1)  + "/" + currentDate.getFullYear();
+                        $("#dateInput").val(date);
+                    });
+                        
+                    $("select, textarea").on("input", function(){
+                        selectNomes = $('select[name=nomes] option').filter(':selected').val();
+                        pedidoText = $("#pedidoInput").val();
+                        if (selectNomes == "disabled" || pedidoText == ""){
+                            $("#submitButton").prop("disabled", true);
+                        } else {
+                            $("#submitButton").prop("disabled", false);
+                        }
+                    });
+                </script>
+            </div>
+        </div>
+    </form>
+</div>
+
+<%- include("footer") -%>
