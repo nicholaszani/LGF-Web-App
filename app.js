@@ -191,13 +191,11 @@ app.get("/logout", function(req, res){
 
 app.get("/pedidos/admin/:customRouteName", function(req, res){
   const id = req.params.customRouteName;
-  console.log(id, typeof(id));
   Pedido.findById(id, function(err, pedido){
     if (err) {
       console.log(err);
     } else {
       res.render("pedidos-edit", {titleName: "Editar pedido", pedidoObject: pedido});
-      console.log(pedido);
     }
   });
 });
