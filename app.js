@@ -1,17 +1,24 @@
+require("dotenv").config();
+
 const express = require("express");
 const mongoose = require("mongoose");
 const https = require("https");
 const _ = require("lodash");
 const app = express();
 
+const session = require("express-session");
+const passport = require("passport");
+const passportLocalMongoose = require ("passport-local-mongoose");
+
+//IMPLEMENTING GOOGLE OAUTH2.0
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const findOrCreate = require("mongoose-findorcreate");  //So that "mongoose" findOrCreate function can work
+
 app.use(express.urlencoded({extended: true}));
 app.use(express.static("public"));
 app.set('view engine', 'ejs');
 mongoose.connect("mongodb+srv://admin-nicholas:ninizani@cluster0.m0nn8.mongodb.net/reservasDB?retryWrites=true&w=majority");
 
-const session = require("express-session");
-const passport = require("passport");
-const passportLocalMongoose = require ("passport-local-mongoose");
 
 //SETTING UP SESSION, PASSPORT, LOCAL STRATEGY
 
@@ -25,11 +32,13 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 const userSchema = new mongoose.Schema({
-  username: String,
-  password: String
+  googleId: String,
+  name: String,
+  familyName: String,
 });
 
 userSchema.plugin(passportLocalMongoose);
+userSchema.plugin(findOrCreate);
 
 const User = mongoose.model("User", userSchema);
 passport.use(User.createStrategy());
@@ -42,6 +51,22 @@ passport.deserializeUser(function(id, done) {
     done(err, user);
   });
 });
+
+//IMPLEMENTIG GOOGLE OAUTH2.0
+passport.use(new GoogleStrategy({
+  clientID: process.env.CLIENT_ID,  //Getting client ID saved in .env file
+  clientSecret: process.env.CLIENT_SECRET,  //Getting client secret saved in .env file
+  callbackURL: "http://localhost:3000/auth/google/home",
+  userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"   //This key has to be added manually (not included in the boilerplate)
+},
+function(accessToken, refreshToken, profile, cb) {
+  User.findOrCreate({ googleId: profile.id, name: profile.name.givenName, familyName: profile.name.familyName }, function (err, user) {
+    return cb(err, user);
+    
+  });
+  
+}
+));
 
 
 
@@ -76,109 +101,142 @@ const Pedido = mongoose.model("Pedido", pedidoSchema);
 
 // GET METHOD
 app.get("/", function(req, res){
-  res.render("home", {titleName: "LGF Web App"});
+  if (req.isAuthenticated()){
+    res.render("home2", {titleName: "LGF Web App", isLoggedIn: true});
+  } else {
+    res.render("home", {titleName: "LGF Web App", isLoggedIn: false});
+  }
 });
 
 app.get("/reservas", function(req, res){
-  res.render("reservas", {titleName: "Reservas"});
+  if (req.isAuthenticated()){
+    res.render("reservas", {titleName: "Reservas", isLoggedIn: true});
+  } else {
+    res.render("reservas", {titleName: "Reservas", isLoggedIn: false});
+  }
 });
 
 app.get("/reservas/:customRouteName", function(req, res){
-  const customRouteName = req.params.customRouteName;
-  const titleName1 = _.capitalize(customRouteName);
-  const titleName2 = titleName1.replaceAll('-', ' ');
-  switch (customRouteName) {
-    case "capela":
-      res.render("equipamentos-reservados", {titleName: "Reservas " + titleName2, capPageName: titleName2, pageName: customRouteName, table1Name: "Capela"});
-      break;
-    case "centrifugas":
-      res.render("equipamentos-reservados", {titleName: "Reservas centrífugas", capPageName: "Centrífugas", pageName: customRouteName, table1Name: "CE-01", table2Name: "CE-02"});
-      break;
-    case "fluxos":
-      res.render("equipamentos-reservados", {titleName: "Reservas " + titleName2, capPageName: titleName2, pageName: customRouteName, table1Name: "FL-01", table2Name: "FL-03"});
-      break;
-    case "leitor-de-placas":
-      res.render("equipamentos-reservados", {titleName: "Reservas " + titleName2, capPageName: titleName2, pageName: customRouteName, table1Name: "leitor-de-placas"});
-      break;
-    case "qpcr":
-      res.render("equipamentos-reservados", {titleName: "Reservas qPCR", capPageName: "qPCR", pageName: customRouteName, table1Name: "qPCR"});
-      break;
-    case "shakers":
-      res.render("equipamentos-reservados", {titleName: "Reservas " + titleName2, capPageName: titleName2, pageName: customRouteName, table1Name: "SH-01", table2Name: "SH-02"});
-      break;
-    case "termocicladores":
-      res.render("equipamentos-reservados", {titleName: "Reservas " + titleName2, capPageName: titleName2, pageName: customRouteName, table1Name: "TC-01", table2Name: "TC-02", table3Name: "TC-03"});
-      break;
-    default: console.log("error");
-
+  if (req.isAuthenticated()){
+    const customRouteName = req.params.customRouteName;
+    const titleName1 = _.capitalize(customRouteName);
+    const titleName2 = titleName1.replaceAll('-', ' ');
+    switch (customRouteName) {
+      case "capela":
+        res.render("equipamentos-reservados", {titleName: "Reservas " + titleName2, capPageName: titleName2, pageName: customRouteName, table1Name: "Capela", isLoggedIn: true});
+        break;
+      case "centrifugas":
+        res.render("equipamentos-reservados", {titleName: "Reservas centrífugas", capPageName: "Centrífugas", pageName: customRouteName, table1Name: "CE-01", table2Name: "CE-02", isLoggedIn: true});
+        break;
+      case "fluxos":
+        res.render("equipamentos-reservados", {titleName: "Reservas " + titleName2, capPageName: titleName2, pageName: customRouteName, table1Name: "FL-01", table2Name: "FL-03", isLoggedIn: true});
+        break;
+      case "leitor-de-placas":
+        res.render("equipamentos-reservados", {titleName: "Reservas " + titleName2, capPageName: titleName2, pageName: customRouteName, table1Name: "leitor-de-placas", isLoggedIn: true});
+        break;
+      case "qpcr":
+        res.render("equipamentos-reservados", {titleName: "Reservas qPCR", capPageName: "qPCR", pageName: customRouteName, table1Name: "qPCR", isLoggedIn: true});
+        break;
+      case "shakers":
+        res.render("equipamentos-reservados", {titleName: "Reservas " + titleName2, capPageName: titleName2, pageName: customRouteName, table1Name: "SH-01", table2Name: "SH-02", isLoggedIn: true});
+        break;
+      case "termocicladores":
+        res.render("equipamentos-reservados", {titleName: "Reservas " + titleName2, capPageName: titleName2, pageName: customRouteName, table1Name: "TC-01", table2Name: "TC-02", table3Name: "TC-03", isLoggedIn: true});
+        break;
+      default: console.log("error");
+    }
+  } else {
+    res.redirect("/auth/google");
   }
 });
 
 app.get("/reservar", function(req, res){
-  res.render("reservar", {titleName: "Reservar"});
+  if (req.isAuthenticated()){
+    res.render("reservar", {titleName: "Reservar", isLoggedIn: true});
+  } else {
+    res.render("reservar", {titleName: "Reservar", isLoggedIn: false});
+  }
 });
 
 app.get("/reservar/:customRouteName", function(req, res){
-  const customRouteName = req.params.customRouteName;
-  const titleName1 = _.capitalize(customRouteName);
-  const titleName2 = titleName1.replaceAll('-', ' ');
+  if (req.isAuthenticated()){
+    const customRouteName = req.params.customRouteName;
+    const titleName1 = _.capitalize(customRouteName);
+    const titleName2 = titleName1.replaceAll('-', ' ');
 
-  if (customRouteName === "leitor-de-placas") {
-    res.render("reservar-equipamentos", {titleName: "Reservar " + titleName2, pageName: titleName2, routeName: customRouteName});
+    if (customRouteName === "leitor-de-placas") {
+      res.render("reservar-equipamentos", {titleName: "Reservar " + titleName2, pageName: titleName2, routeName: customRouteName, isLoggedIn: true});
+    } else {
+      res.render("reservar-equipamentos", {titleName: "Reservar " + customRouteName, pageName: customRouteName, routeName: customRouteName, isLoggedIn: true});
+    }
   } else {
-    res.render("reservar-equipamentos", {titleName: "Reservar " + customRouteName, pageName: customRouteName, routeName: customRouteName});
+    res.redirect("/auth/google");
   }
-
 });
 
 app.get("/json/:customRouteName", function(req, res){
-  const customRouteName = req.params.customRouteName;
-  Equipment.findOne({codigo: customRouteName}, 'reservas', (err, foundEquipments) => {
-    if(err){
-      console.log(err);
-    } else {
-      res.send(foundEquipments);
-    }
-  });
-});
-
-app.get("/admin", function(req, res){
-  res.render("admin", {titleName: "Admin"});
+  if (req.isAuthenticated()){
+    const customRouteName = req.params.customRouteName;
+    Equipment.findOne({codigo: customRouteName}, 'reservas', (err, foundEquipments) => {
+      if(err){
+        console.log(err);
+      } else {
+        res.send(foundEquipments);
+      }
+    });
+  } else {
+    res.redirect("/auth/google");
+  }
 });
 
 app.get("/about", function(req, res){
-  res.render("about", {titleName: "Sobre"});
+  if (req.isAuthenticated()){
+    res.render("about", {titleName: "Sobre", isLoggedIn: true});
+  } else {
+    res.render("about", {titleName: "Sobre", isLoggedIn: false});
+  }
 });
 
 app.get("/planilhas", function(req, res){
-  res.render("planilhas", {titleName: "Planilhas"});
+  if (req.isAuthenticated()){
+    res.render("planilhas", {titleName: "Planilhas", isLoggedIn: true});
+  } else {
+    res.redirect("/auth/google");
+  }
 });
 
 app.get("/pedidos", function(req, res){
-  Pedido.find({}, (err, pedidos) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.render("pedidos", {titleName: "Pedidos", pedidosArray: pedidos});
-    }
-  });
-});
-
-app.get("/login", (req, res) => {
-  res.render("login", {titleName: "Login"});
-});
-
-app.get("/pedidos/admin", (req, res) => {
   if (req.isAuthenticated()){
     Pedido.find({}, (err, pedidos) => {
       if (err) {
         console.log(err);
       } else {
-        res.render("pedidos-adm", {titleName: "Admin", pedidosArray: pedidos});
+        res.render("pedidos", {titleName: "Pedidos", pedidosArray: pedidos, isLoggedIn: true});
       }
     });
   } else {
-    res.redirect("/login");
+    res.redirect("/auth/google");
+  }
+});
+
+app.get("/pedidos/admin", (req, res) => {
+  if (req.isAuthenticated()){
+    var name = req.user.name;
+    var familyName = req.user.familyName;
+    var userName = (name + familyName).toLowerCase();
+    if (userName === "pedroaraújo" || userName === "nicholaszani"){
+      Pedido.find({}, (err, pedidos) => {
+        if (err) {
+          console.log(err);
+        } else {
+          res.render("pedidos-adm", {titleName: "Admin", pedidosArray: pedidos, isLoggedIn: true});
+        }
+      });
+    } else {
+      res.redirect("/");
+    }
+  } else {
+    res.redirect("/auth/google");
   }
 });
 
@@ -190,15 +248,35 @@ app.get("/logout", function(req, res){
 });
 
 app.get("/pedidos/admin/:customRouteName", function(req, res){
-  const id = req.params.customRouteName;
-  Pedido.findById(id, function(err, pedido){
-    if (err) {
-      console.log(err);
+  if (req.isAuthenticated()){
+    var name = req.user.name;
+    var familyName = req.user.familyName;
+    var userName = (name + familyName).toLowerCase();
+    if (userName === "pedroaraújo" || userName === "nicholaszani"){
+      const id = req.params.customRouteName;
+      Pedido.findById(id, function(err, pedido){
+        if (err) {
+          console.log(err);
+        } else {
+          res.render("pedidos-edit", {titleName: "Editar pedido", pedidoObject: pedido, isLoggedIn: true});
+        }
+      });
     } else {
-      res.render("pedidos-edit", {titleName: "Editar pedido", pedidoObject: pedido});
+      res.redirect("/");
     }
-  });
+  } else {
+    res.redirect("/auth/google");
+  }
 });
+
+app.get("/auth/google", passport.authenticate("google", { scope: ["profile"] }));
+
+app.get("/auth/google/home",
+  passport.authenticate("google", { failureRedirect: "/" }),     //REDIRECTING TO THE SELECTED ROUTE ONCE GOOGLE AUTHENTICATION IS COMPLETED
+  function(req, res) {
+    // Successful authentication, redirect to secrets route (where authentication will be checked).
+    res.redirect("/");
+  });
 
 
 
@@ -207,12 +285,14 @@ app.post("/reservar/:customRouteName", function(req, res){
   const customRouteName = req.params.customRouteName;
   const diaReservado = req.body.dias;
   const horarioReservado = req.body.horarios;
-  const nomeReservado = req.body.nomes;
+  const familyName = req.user.familyName.slice(0, 1);
+  const name = req.user.name;
+  const autor = name + " " + familyName + ".";
 
   const booked = new Book ({
     dia: diaReservado,
     horario: horarioReservado,
-    nome: nomeReservado,
+    nome: autor,
     equipamento: customRouteName
   });
 
@@ -266,25 +346,17 @@ app.post("/delete/:customRouteName", (req, res) => {
   
 });
 
-app.post("/admin", (req, res) =>{
-  Equipment.deleteMany({}, (err) =>{
-    if (err) {
-      console.log(err);
-    } else {
-      res.redirect("/admin");
-    }
-  });
-});
-
 app.post("/pedidos", (req, res) =>{
   const titleName = req.body.routename;
+  const familyName = req.user.familyName.slice(0, 1);
+  const name = req.user.name;
+  const autor = name + " " + familyName + ".";
   const pedidoRecebido = req.body.pedidoInput;
-  const nomeAutor = req.body.nomes;
   const dataPedido = req.body.dateInput;
 
   const pedidoFeito = new Pedido ({
     pedido: pedidoRecebido,
-    autor: nomeAutor,
+    autor: autor,
     data: dataPedido,
     status: "Aguardando compra",
     update: dataPedido,

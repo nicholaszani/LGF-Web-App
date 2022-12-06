@@ -74,32 +74,10 @@
     <form id="infosPedidos" action="/pedidos" method="POST">
         <div class="row">
             <div class="alignCenter">
-                <label for="nomes" class="paddingLabel">Qual é seu nome?</label>
-                <br>
-                <select form="infosPedidos" id="nomes" name="nomes">
-                    <option value="disabled" selected disabled hidden></option>
-                    <option value="Ana Laura">Ana Laura</option>
-                    <option value="Adriana">Adriana</option>
-                    <option value="Bruno">Bruno</option>
-                    <option value="Daniel">Daniel</option>
-                    <option value="Juan">Juan</option>
-                    <option value="Maria Fernanda">Maria Fernanda</option>
-                    <option value="Mileny">Mileny</option>
-                    <option value="Nery">Nery</option>
-                    <option value="Nicholas">Nicholas</option>
-                    <option value="Pamela">Pamela</option>
-                    <option value="Pedro">Pedro</option>
-                    <option value="Talita H.">Talita H.</option>
-                    <option value="Talitha B.">Talitha B.</option>
-                    <option value="Vitor">Vitor</option>
-                    <option value="Willian">Willian</option>
-                </select>
-                <input type="hidden" name="dateInput" id="dateInput" value=""></input>
-            </div>
-            <div class="alignCenter">
                 <label class="paddingLabel" for="pedidoInput">O que quer pedir?</label>
                 <br>
                 <textarea id="pedidoInput" name="pedidoInput" cols="30" rows="2"></textarea>
+                <input type="hidden" name="dateInput" id="dateInput" value=""></input>
             </div>
             <div class="alignCenter">
                 <button class="btn btn-outline-dark marginButton" disabled="true" id="submitButton" name="submitButton" value="submitPedidos">Realizar pedido</button>
@@ -110,10 +88,9 @@
                         $("#dateInput").val(date);
                     });
                         
-                    $("select, textarea").on("input", function(){
-                        selectNomes = $('select[name=nomes] option').filter(':selected').val();
+                    $("textarea").on("input", function(){
                         pedidoText = $("#pedidoInput").val();
-                        if (selectNomes == "disabled" || pedidoText == ""){
+                        if (pedidoText == ""){
                             $("#submitButton").prop("disabled", true);
                         } else {
                             $("#submitButton").prop("disabled", false);
