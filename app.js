@@ -17,7 +17,7 @@ const findOrCreate = require("mongoose-findorcreate");  //So that "mongoose" fin
 app.use(express.urlencoded({extended: true}));
 app.use(express.static("public"));
 app.set('view engine', 'ejs');
-mongoose.connect("mongodb+srv://admin-nicholas:ninizani@cluster0.m0nn8.mongodb.net/reservasDB?retryWrites=true&w=majority");
+mongoose.connect(process.env.MONGODB_CONNECTION);
 
 
 //SETTING UP SESSION, PASSPORT, LOCAL STRATEGY
@@ -56,7 +56,7 @@ passport.deserializeUser(function(id, done) {
 passport.use(new GoogleStrategy({
   clientID: process.env.CLIENT_ID,  //Getting client ID saved in .env file
   clientSecret: process.env.CLIENT_SECRET,  //Getting client secret saved in .env file
-  callbackURL: "http://localhost:3000/auth/google/home",
+  callbackURL: "https://www.lgfwebapp.ib.unicamp.br/auth/google/home",
   userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"   //This key has to be added manually (not included in the boilerplate)
 },
 function(accessToken, refreshToken, profile, cb) {
