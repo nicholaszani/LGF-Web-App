@@ -56,6 +56,7 @@ passport.deserializeUser(function(id, done) {
 passport.use(new GoogleStrategy({
   clientID: process.env.CLIENT_ID,  //Getting client ID saved in .env file
   clientSecret: process.env.CLIENT_SECRET,  //Getting client secret saved in .env file
+  //callbackURL: "http://localhost:3000/auth/google/home",
   callbackURL: "https://www.lgfwebapp.ib.unicamp.br/auth/google/home",
   userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"   //This key has to be added manually (not included in the boilerplate)
 },
@@ -335,8 +336,8 @@ app.post("/delete/:customRouteName", (req, res) => {
   }
 
   if (customRouteName === "pedido") {
-    const idPedido = req.body.id;
-    Pedido.deleteOne({id:idPedido}).then(function(){
+    const idPedido1 = req.body.idPedido;
+    Pedido.deleteOne({_id:idPedido1}).then(function(){
         res.redirect("/pedidos");
       }).catch(function(error){
         console.log(error);

@@ -57,12 +57,10 @@
                             const data = $(`#d${id}`).text();
                             const answer = window.confirm(`Deseja cancelar o pedido: "${pedido}", feito em ${data} por ${autor}?`);
                             if (answer == true){
-                                console.log("1");
                                 $.post("/delete/pedido", {idPedido: id}).done(function(data){
                                     window.location.reload();
                                         alert("Pedido cancelado.");
-                                });
-                                console.log("2"); 
+                                });   
                             }
                         }
 
